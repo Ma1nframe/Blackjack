@@ -7,6 +7,10 @@
     "build": "parcel build script.js",
     "start": "npm run build && live-server script.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ma1nframe/Blackjack.git"
+  },
   "author": "AJ Daddario",
   "license": "ISC",
   "dependencies": {

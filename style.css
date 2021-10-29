@@ -1,5 +1,14 @@
+body {
+    background-color:rgb(210, 210, 210)
+}
 h1 {
     font-size: 60px;
+    text-shadow:       
+      3px 3px 3px #44d62c,
+    -2px -2px 0 #44d62c,  
+     2px -2px 0 #44d62c,
+     -2px 2px 0 #44d62c,
+      2px 2px 0 #44d62c;
 }
 h2 {
     font-size: 50px;
@@ -18,8 +27,42 @@ button {
     border-radius: 5px;
     background-color:black;
     color: #44d62c;
-    box-shadow: 3px 3px 5px rgb(50, 50, 50);
     border: 1px solid #44d62c;
     font-weight:bold;
     font-size: 18px;
 }
+button:hover {
+    box-shadow: 3px 3px 5px rgb(50, 50, 50);
+}
+.black-jack {
+    color: #ffffff;
+    font-weight: bold;
+    animation-name: rotate;
+    animation-duration: 3s;
+}
+.bust {
+    color: red;
+    font-weight: bold;
+    text-shadow:     
+     2px  2px 1px #000000,
+    -1px -1px 0 #000000,  
+     1px -1px 0 #000000,
+     -1px 1px 0 #000000,
+      1px 1px 0 #000000;
+      animation-name: rotate;
+      animation-duration: 3s;
+      letter-spacing: .5rem;
+}
+.hidden {
+    display:none;
+}
+
+/***** Animation *****/
+@keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

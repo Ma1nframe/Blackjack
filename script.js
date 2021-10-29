@@ -1,61 +1,125 @@
 'use strict';
 
+// Buttons
+const dealBtn = document.querySelector('.deal-button')
+const hitBtn = document.querySelector('.hit-button');
+const holdBtn = document.querySelector('.hold-button');
+const restartButton = document.querySelector('.restart-button');
+
+// Blackjack & Bust
+const bJack = document.querySelector('.b-j');
+const bust = document.querySelector('.bust');
+let bJacked, busted, holdBtnView, restarted = false;
+
 const results = document.querySelector('.results');
-const restartButton = document.querySelector('.restartButton');
-const hitBtn = document.querySelector('.hitButton');
-const player = document.querySelector('.playerPoints');
-const dealer= document.querySelector('.dealerPoints');
+const player = document.querySelector('.player-points');
+const dealer = document.querySelector('.dealer-points');
 
-// let bet;
-// let pot = 1000;
-// let currentPot = pot - bet;
-
-let dealerHand;
-let playerHand;
+let dealerHand, playerHand;
 
 function init() {
-restartButton.style.display = 'none';
 dealerHand = 0;
 playerHand = 0;
 player.textContent = playerHand;
 dealer.textContent = dealerHand;
 results.textContent = '';
+
+if(bJacked = true) {
+    bJack.classList.remove('black-jack')
+};
+if(busted = true) {
+    bust.classList.add('hidden')
+};
+if (holdBtnView = true) {
+    holdBtn.classList.add('hidden');
+};
+if (restarted = true) {
+    restartButton.classList.add('hidden');
+}
 };
 init();
 
+// Check if the player or dealer busts or hits blackjack
+function checkForBustOrBj(hand) {
+    if (hand >= 22) {
+        bust.classList.remove('hidden');
+        calculateWinner(playerHand, dealerHand);
+        busted = true;
+    } else if (hand === 21) {
+        bJack.classList.add('black-jack');
+        // Don't calculate the winner if the player hits blackjack. The dealer still gets a turn.
+        bJacked = true;
+    } else {
+        // Do nothing
+    };
+};
+
+// Winning conditions
 function calculateWinner(playerScore, dealerScore) {
 
-    if (playerScore < dealerScore) {
+    if (playerScore > 21) {
         results.textContent = 'You lose, play again?';
-        restartButton.style.display = 'inline';
-        // pot = currentPot;
-        // bet = 0;
-    } else if (playerScore > dealerScore) { 
+        restartButton.classList.remove('hidden');
+        restarted = true;
+    } else if (playerScore < dealerScore && dealerScore <= 21) {
+        results.textContent = 'You lose, play again?';
+        restartButton.classList.remove('hidden');
+        restarted = true;        
+    } else if (dealerScore > 21) { 
         results.textContent = 'You win, play again?';
-        restartButton.style.display = 'inline';
-        // pot = currentPot + (bet * 2);
-        // bet = 0;
-    } else {
+        restartButton.classList.remove('hidden');
+        restarted = true;
+    } else if (playerScore > dealerScore && playerScore <= 21) {
+        results.textContent = 'You win, Play Again?';
+        restartButton.classList.remove('hidden');
+        restarted = true;
+    } else if (playerScore === dealerScore) {
         results.textContent = 'Draw, Play Again?';
-        restartButton.style.display = 'inline';
-        // bet = 0;
-    };
+        restartButton.classList.remove('hidden');
+        restarted = true;        
+    }
 
     player.textContent = playerHand;
     dealer.textContent = dealerHand;
 };
 
-
+// Generate random numer for Player
 function getRandomIntPlayer() {
-    return Math.floor(Math.random() *21) +1;
+    return Math.floor(Math.random() *12) +1;
 };
+// Generate random numer for Dealer
 function getRandomIntDealer() {
-    return Math.floor(Math.random() *21) +1;
+    return Math.floor(Math.random() *12) +1;
 };
 
+// Deal
+dealBtn.addEventListener('click', function() {
+    if(playerHand === 0 && dealerHand === 0) {
+        playerHand = getRandomIntPlayer();
+        dealerHand = getRandomIntDealer();
+        player.textContent = playerHand;
+        dealer.textContent = dealerHand;
+        holdBtnView = true;
+        holdBtn.classList.remove('hidden');
+    };
+});
+// Hit Me
 hitBtn.addEventListener('click', function() {
-    playerHand = getRandomIntPlayer();
-    dealerHand = getRandomIntDealer();
+    if(playerHand < 21 && playerHand != 0) {
+        playerHand += getRandomIntPlayer();
+        player.textContent = playerHand;
+    };
+    checkForBustOrBj(playerHand);
+});
+// Hold
+holdBtn.addEventListener('click', function() {
+
+    while (playerHand > dealerHand && dealerHand < 21) {
+        dealerHand += getRandomIntDealer();
+        dealer.textContent = dealerHand;
+        checkForBustOrBj(dealerHand);
+    };
+
     calculateWinner(playerHand, dealerHand);
 });
 

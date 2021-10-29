@@ -10,37 +10,59 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container text-center">
+    <div class="container text-center mb-4">
         <div class="jumbotron">
-            <h1 class="mx-auto pt-5">Blackjack</h1>
+            <h1 class="mx-auto pt-5 b-j">BlackJack</h1>
         </div>
     </div>
-    <div class="container">
+    <div class="container mb-4">
         <div class="row">
-            <div class="col-sm-6">
-                <h3 class="pull-right m-3 p-3 results"></h3>
+            <div class="col-sm-3 text-center">
+                <img src="assets/jack1.png" />
             </div>
-            <div class="col-sm-6">
-                <button type="submit" class="pull-left m-3 p-3 restartButton">Play Again</button>
+            <div class="col-sm-6 text-center">
+                <img src="assets/bjack-dealer.jpg" />
+            </div>
+            <div class="col-sm-3 text-center">
+                <img src="assets/jack2.png" />
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container mb-4">
         <div class="row">
             <div class="col-sm-6 text-center">
                 <h4>Dealer</h4>
-                <h5 class="dealerPoints"></h5>
+                <h5 class="dealer-points"></h5>
             </div>
             <div class="col-sm-6 text-center">
                 <h4>Player</h4>
-                <h5 class="playerPoints"></h5>
+                <h5 class="player-points"></h5>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid mb-4">
         <div class="row">
+            <div class="col-sm-4 text-center">
+                <button type="submit" class="p-3 deal-button">Deal</button>
+            </div>
+            <div class="col-sm-4 text-center">
+                <button type="submit" class="p-3 hit-button">Hit</button>
+            </div>
+            <div class="col-sm-4 text-center">
+                <button type="submit" class="p-3 hold-button hidden">Hold</button>
+            </div>
+        </div>
+    </div>
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-sm-12 pb-3 text-center">
+                <h3 class="bust hidden">BUST!!!</h3>
+            </div>
+            <div class="col-sm-12 pb-3">
+                <h3 class="text-center p-3 results"></h3>
+            </div>
             <div class="col-sm-12 text-center">
-                <button type="submit" class="p-3 hitButton">Hit</button>
+                <button type="submit" class="p-3 restart-button hidden">Play Again</button>
             </div>
         </div>
     </div>

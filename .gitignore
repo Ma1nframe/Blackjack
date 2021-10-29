@@ -1,3 +1,7 @@
 # Parcel
 node_modules
+dist
+.parcel-cache
 
+#VS_CODE
+.vscode

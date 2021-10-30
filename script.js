@@ -15,9 +15,13 @@ let bJacked, busted, holdBtnView, restarted, canHit = false;
 
 // Dealer and player hands
 const player = document.querySelector('.player-points');
-const pDraw = document.querySelector('.player-draw');
+const pDraw1 = document.querySelector('.player-draw1');
+const pDraw2 = document.querySelector('.player-draw2');
+const pDraw3 = document.querySelector('.player-draw3');
 const dealer = document.querySelector('.dealer-points');
-const dDraw = document.querySelector('.dealer-draw');
+const dDraw1 = document.querySelector('.dealer-draw1');
+const dDraw2 = document.querySelector('.dealer-draw2');
+const dDraw3 = document.querySelector('.dealer-draw3');
 
 let dealerHand, playerHand;
 
@@ -29,9 +33,9 @@ function init() {
 dealerHand = 0;
 playerHand = 0;
 player.textContent = playerHand;
-pDraw.src = "assets/cards/bicycle-red-back.png";
+pDraw1.src = "assets/cards/bicycle-red-back.png";
 dealer.textContent = dealerHand;
-dDraw.src = "assets/cards/bicycle-blue-back.png";
+dDraw1.src = "assets/cards/bicycle-blue-back.png";
 results.textContent = '';
 
 if(bJacked = true) {
@@ -116,7 +120,8 @@ function getCardDealer(x, y) {
     dealerHand += cardValue;
  
     // Dynamically generate the .png image
-    dDraw.src = `/assets/cards/${card}-${suit}.png`;
+    dDraw1.src = `/assets/cards/${card}-${suit}.png`;
+
 };
 
 // Generate random card dynamically and add its value to the hand
@@ -130,9 +135,10 @@ function getCardPlayer(x, y) {
 
     // Take the card's value and add it to the player's hand
     playerHand += cardValue;
- 
+
     // Dynamically generate the .png image
-    pDraw.src = `/assets/cards/${card}-${suit}.png`;
+    pDraw1.src=`/assets/cards/${card}-${suit}.png`;
+
 };
 
 // Deal

@@ -56,7 +56,18 @@ button:hover {
 .hidden {
     display:none;
 }
-
+.poker-table {
+    background-color:#44a07bff!important;
+    padding: 12px;
+}
+.poker-table-front {
+background-image:url(assets/poker-table-end.png);
+width:100%;
+background-size: 100% 100px;
+bottom: 0;
+height: 100px;
+z-index: 1;
+}
 /***** Animation *****/
 @keyframes rotate {
     0% {

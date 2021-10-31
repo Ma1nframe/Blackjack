@@ -18,24 +18,44 @@ const player = document.querySelector('.player-points');
 const pDraw1 = document.querySelector('.player-draw1');
 const pDraw2 = document.querySelector('.player-draw2');
 const pDraw3 = document.querySelector('.player-draw3');
+const pDraw4 = document.querySelector('.player-draw4');
+const pDraw5 = document.querySelector('.player-draw5');
+const pDraw6 = document.querySelector('.player-draw6');
 const dealer = document.querySelector('.dealer-points');
 const dDraw1 = document.querySelector('.dealer-draw1');
 const dDraw2 = document.querySelector('.dealer-draw2');
 const dDraw3 = document.querySelector('.dealer-draw3');
+const dDraw4 = document.querySelector('.dealer-draw4');
+const dDraw5 = document.querySelector('.dealer-draw5');
+const dDraw6 = document.querySelector('.dealer-draw6');
 
 let dealerHand, playerHand;
 
 const suits = ['hearts', 'spades', 'clubs', 'diamonds'];
 const cards = {'two':2, 'three':3, 'four':4, 'five':5, 'six':6, 'seven':7, 'eight':8, 'nine':9, 'ten':10, 'jack':10, 'queen':10, 'king':10, 'ace':11};
+let indexP = 1;
+let indexD = 1;
 
 // Initial settings
 function init() {
+indexP = 1;
+indexD = 1;
 dealerHand = 0;
 playerHand = 0;
 player.textContent = playerHand;
 pDraw1.src = "assets/cards/bicycle-red-back.png";
+pDraw2.src = "assets/cards/bicycle-red-back.png";
+pDraw3.src = "";
+pDraw4.src = "";
+pDraw5.src = "";
+pDraw6.src = "";
 dealer.textContent = dealerHand;
 dDraw1.src = "assets/cards/bicycle-blue-back.png";
+dDraw2.src = "assets/cards/bicycle-blue-back.png";
+dDraw3.src = "";
+dDraw4.src = "";
+dDraw5.src = "";
+dDraw6.src = "";
 results.textContent = '';
 
 if(bJacked = true) {
@@ -105,6 +125,7 @@ function getRandomIntPlayer() {
 function getRandomIntDealer() {
     return Math.floor(Math.random() * 13);
 };
+
 // Generate random card dynamically and add its value to the hand
 function getCardDealer(x, y) {
     // Get random suit from suits array
@@ -120,8 +141,9 @@ function getCardDealer(x, y) {
     dealerHand += cardValue;
  
     // Dynamically generate the .png image
-    dDraw1.src = `/assets/cards/${card}-${suit}.png`;
-
+    const draws = [dDraw1, dDraw2, dDraw3, dDraw4, dDraw5, dDraw6];
+    draws[indexD - 1].src = `assets/cards/${card}-${suit}.png`;
+    indexD++;
 };
 
 // Generate random card dynamically and add its value to the hand
@@ -137,8 +159,9 @@ function getCardPlayer(x, y) {
     playerHand += cardValue;
 
     // Dynamically generate the .png image
-    pDraw1.src=`/assets/cards/${card}-${suit}.png`;
-
+    const draws = [pDraw1, pDraw2, pDraw3, pDraw4, pDraw5, pDraw6];
+    draws[indexP - 1].src = `assets/cards/${card}-${suit}.png`;
+    indexP++;
 };
 
 // Deal
@@ -147,12 +170,14 @@ dealBtn.addEventListener('click', function() {
         // playerHand = getRandomIntPlayer();
         getCardPlayer(cards, suits);
         getCardDealer(cards, suits);
+        getCardPlayer(cards, suits);
         player.textContent = playerHand;
         dealer.textContent = dealerHand;
         holdBtnView = true;
         canHit = true;
         holdBtn.classList.remove('hidden');
     };
+    checkForBustOrBj(playerHand);
 });
 // Hit
 hitBtn.addEventListener('click', function() {

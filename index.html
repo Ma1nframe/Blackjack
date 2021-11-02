@@ -10,10 +10,29 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
+<br />
     <div class="container text-center mb-4">
-        <div class="jumbotron">
-            <h1 class="mx-auto pt-5 b-j">BlackJack</h1> &nbsp;
-            <!-- <h3 class="bust hidden">BUST!!!</h3> -->
+        <div class="row">
+            <div class="col-lg-4 text-center">
+                <h3 style="font-style:italic;">POT</h3>
+                <hr class="rounded mt-2 mb-4" />
+                <h4 class="moneyPot"></h4>
+            </div>
+            <div class="col-lg-4 text-center">
+                <h1 class="mx-auto pt-5 b-j">BlackJack</h1> &nbsp;
+                <h3 class="bust hidden">BUST!!!</h3>
+            </div>
+            <div class="col-lg-2 text-center">
+                <h3 style="font-style:italic;">WAGER</h3>
+                <hr class="rounded mt-2 mb-4" />
+                <input class="wagerInput mb-3" style="max-width:150px;" />
+                <button class="submitWager" type="submit">BET</button>
+            </div>
+            <div class="col-lg-2 text-center" style="padding-left:30px;">
+                <h4 class="mb-2 mt-3">Current Bet</h4>
+                <hr class="rounded mb-4" />
+                <h5 class="currentWager"></h5>
+            </div>
         </div>
     </div>
     <div class="container-fluid mb-4">
@@ -27,7 +46,7 @@
                 <img src="assets/jack1.png" />
             </div>
             <div class="col-lg-4 text-center">
-                <img src="assets/bjack-dealer.jpg"><h3 class="bust hidden">BUST!!!</h3></img>
+                <img src="assets/bjack-dealer.jpg">
             </div>
             <div class="col-lg-2 text-center">
                 <img src="assets/jack2.png" />
@@ -47,8 +66,8 @@
                 <img src="assets/cards/bicycle-blue-back.png" class="dealer-draw2" />
             </div>
             <div class="col-lg-1 text-center">
-                <h4>Dealer</h4>
-                <h5 class="dealer-points"></h5>
+                <h4 class="bjsc">Dealer</h4>
+                <h5 class="bjsc dealer-points"></h5>
                 <img src="assets/cards/bicycle-blue-back.png" class="dealer-draw1" />
             </div>
             <div class="col-lg-1 text-center">
@@ -67,8 +86,8 @@
                 <img src="assets/cards/bicycle-red-back.png" class="player-draw2" />
             </div>
             <div class="col-lg-1 text-center">
-                <h4>Player</h4>
-                <h5 class="player-points"></h5>
+                <h4 class="bjsc">Player</h4>
+                <h5 class="bjsc player-points"></h5>
                 <img src="assets/cards/bicycle-red-back.png" class="player-draw1" />
             </div>
             <div class="col-lg-1">

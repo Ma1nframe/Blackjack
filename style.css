@@ -22,6 +22,23 @@ h4 {
 h5 {
     font-size: 20px;
 }
+p {
+    font-size:16px;
+}
+hr {
+    border-top: 8px solid black;
+    border-radius: 5px;
+}
+.moneyPot {
+    color: #44a07bff;
+    display:border-box;
+    border: 2px dotted black;
+    border-radius:5px;
+}
+.bjsc {
+    color: white;
+    padding-left: 30px;
+}
 button {
     width: 150px;
     border-radius: 5px;

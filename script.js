@@ -1,19 +1,20 @@
 'use strict';
 
-// Buttons
+/***** Buttons *****/
 const dealBtn = document.querySelector('.deal-button')
 const hitBtn = document.querySelector('.hit-button');
 const holdBtn = document.querySelector('.hold-button');
 const restartButton = document.querySelector('.restart-button');
 
-// Blackjack & Bust
+/***** Blackjack & Bust *****/
 const bJack = document.querySelector('.b-j');
 const bust = document.querySelector('.bust');
 const results = document.querySelector('.results');
 
 let bJacked, busted, holdBtnView, restarted, canHit = false;
+let dealerHand, playerHand;
 
-// Dealer and player hands
+/***** Dealer and player hands *****/
 const player = document.querySelector('.player-points');
 const pDraw1 = document.querySelector('.player-draw1');
 const pDraw2 = document.querySelector('.player-draw2');
@@ -29,19 +30,31 @@ const dDraw4 = document.querySelector('.dealer-draw4');
 const dDraw5 = document.querySelector('.dealer-draw5');
 const dDraw6 = document.querySelector('.dealer-draw6');
 
-let dealerHand, playerHand;
-
 const suits = ['hearts', 'spades', 'clubs', 'diamonds'];
 const cards = {'two':2, 'three':3, 'four':4, 'five':5, 'six':6, 'seven':7, 'eight':8, 'nine':9, 'ten':10, 'jack':10, 'queen':10, 'king':10, 'ace':11};
 let indexP = 1;
 let indexD = 1;
 
-// Initial settings
+/***** BETTING *****/
+// Tracking Pot and Bets
+let pot = 1000;
+let bet = 0;
+// Displaying the Pot and Bet
+const playerPot = document.querySelector('.moneyPot');
+const currentBet = document.querySelector('.currentWager');
+// Capturing the bet
+const enterBet = document.querySelector('.submitWager');
+const inputBet = document.querySelector('.wagerInput');
+
+//////////////////////////////////
+// Initializing Settings and game
+/////////////////////////////////
 function init() {
 indexP = 1;
 indexD = 1;
 dealerHand = 0;
 playerHand = 0;
+playerPot.textContent = '$' + pot;
 player.textContent = playerHand;
 pDraw1.src = "assets/cards/bicycle-red-back.png";
 pDraw2.src = "assets/cards/bicycle-red-back.png";
@@ -58,6 +71,7 @@ dDraw5.src = "";
 dDraw6.src = "";
 results.textContent = '';
 
+// Dynamic styling
 if(bJacked = true) {
     bJack.classList.remove('black-jack')
 };
@@ -72,6 +86,12 @@ if (restarted = true) {
 }
 };
 init();
+
+// Capture bet and display value
+enterBet.addEventListener('click', function() {
+    bet = inputBet.value;
+    currentBet.textContent = bet;
+});
 
 // Check if the player or dealer busts or hits blackjack
 function checkForBustOrBj(hand) {
@@ -99,7 +119,7 @@ function calculateWinner(playerScore, dealerScore) {
         results.textContent = 'You lose, play again?';
         restartButton.classList.remove('hidden');
         restarted = true;        
-    } else if (dealerScore > 21) { 
+    } else if (dealerScore > 21) {
         results.textContent = 'You win, play again?';
         restartButton.classList.remove('hidden');
         restarted = true;

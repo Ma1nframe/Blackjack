@@ -11,7 +11,7 @@ const bJack = document.querySelector('.b-j');
 const bust = document.querySelector('.bust');
 const results = document.querySelector('.results');
 
-let bJacked, busted, holdBtnView, restarted, canHit = false;
+let bJacked, busted, holdBtnView, restarted, canHit, removeBetBtn = false;
 let dealerHand, playerHand;
 
 /***** Dealer and player hands *****/
@@ -42,7 +42,7 @@ let bet = 0;
 // Displaying the Pot and Bet
 const playerPot = document.querySelector('.moneyPot');
 const currentBet = document.querySelector('.currentWager');
-// Capturing the bet
+// Input Capture the bet
 const enterBet = document.querySelector('.submitWager');
 const inputBet = document.querySelector('.wagerInput');
 
@@ -54,7 +54,8 @@ indexP = 1;
 indexD = 1;
 dealerHand = 0;
 playerHand = 0;
-playerPot.textContent = '$' + pot;
+bet = 0;
+currentBet.textContent = bet;
 player.textContent = playerHand;
 pDraw1.src = "assets/cards/bicycle-red-back.png";
 pDraw2.src = "assets/cards/bicycle-red-back.png";
@@ -84,13 +85,18 @@ if (holdBtnView = true) {
 if (restarted = true) {
     restartButton.classList.add('hidden');
 }
+if (removeBetBtn = true) {
+    enterBet.classList.remove('hidden');
+}
 };
 init();
 
 // Capture bet and display value
 enterBet.addEventListener('click', function() {
-    bet = inputBet.value;
-    currentBet.textContent = bet;
+    bet = Math.floor(inputBet.value);
+    currentBet.textContent = Math.floor(bet);
+
+    enterBet.classList.add('hidden');
 });
 
 // Check if the player or dealer busts or hits blackjack
@@ -112,29 +118,30 @@ function checkForBustOrBj(hand) {
 function calculateWinner(playerScore, dealerScore) {
 
     if (playerScore > 21) {
+        pot -= bet;
         results.textContent = 'You lose, play again?';
-        restartButton.classList.remove('hidden');
-        restarted = true;
     } else if (playerScore < dealerScore && dealerScore <= 21) {
-        results.textContent = 'You lose, play again?';
-        restartButton.classList.remove('hidden');
-        restarted = true;        
-    } else if (dealerScore > 21) {
+        pot -= bet;
+        results.textContent = 'You lose, play again?';        
+    } else if (dealerScore > 21 && playerScore <= dealerScore) {
+        pot += bet;
         results.textContent = 'You win, play again?';
-        restartButton.classList.remove('hidden');
-        restarted = true;
     } else if (playerScore > dealerScore && playerScore <= 21) {
+        pot += bet;
         results.textContent = 'You win, Play Again?';
-        restartButton.classList.remove('hidden');
-        restarted = true;
     } else if (playerScore === dealerScore) {
-        results.textContent = 'Draw, Play Again?';
-        restartButton.classList.remove('hidden');
-        restarted = true;        
+        results.textContent = 'Draw, Play Again?';        
+    } else {
+        // Do nothing
     }
 
+    playerPot.textContent = pot;
     player.textContent = playerHand;
     dealer.textContent = dealerHand;
+
+    restartButton.classList.remove('hidden');
+    restarted = true;
+    removeBetBtn = true
 };
 
 // Generate random numer for Player
@@ -218,7 +225,9 @@ holdBtn.addEventListener('click', function() {
         checkForBustOrBj(dealerHand);
     };
 
+    if(dealerHand < 21 && dealerHand > playerHand) {
     calculateWinner(playerHand, dealerHand);
+    };
 });
 
 // Replay

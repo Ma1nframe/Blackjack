@@ -107,7 +107,7 @@ enterBet.addEventListener('click', function() {
 
     currentBet.textContent = Math.floor(bet);
     enterBet.classList.add('hidden');
-    
+
     }
 });
 
@@ -237,7 +237,7 @@ holdBtn.addEventListener('click', function() {
         checkForBustOrBj(dealerHand);
     };
 
-    if(dealerHand < 21 && dealerHand >= playerHand) {
+    if(dealerHand <= 21 && dealerHand >= playerHand) {
     calculateWinner(playerHand, dealerHand);
     };
 });

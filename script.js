@@ -42,7 +42,7 @@ let bet = 0;
 // Displaying the Pot and Bet
 const playerPot = document.querySelector('.moneyPot');
 const currentBet = document.querySelector('.currentWager');
-// Input Capture the bet
+// Capture the Bet Input
 const enterBet = document.querySelector('.submitWager');
 const inputBet = document.querySelector('.wagerInput');
 
@@ -55,6 +55,7 @@ indexD = 1;
 dealerHand = 0;
 playerHand = 0;
 bet = 0;
+inputBet.value = 0;
 currentBet.textContent = bet;
 player.textContent = playerHand;
 pDraw1.src = "assets/cards/bicycle-red-back.png";
@@ -93,10 +94,21 @@ init();
 
 // Capture bet and display value
 enterBet.addEventListener('click', function() {
-    bet = Math.floor(inputBet.value);
-    currentBet.textContent = Math.floor(bet);
 
+    bet = Math.floor(inputBet.value);
+
+    if (isNaN(bet)) {
+        alert('Bet must be a number');
+        bet = 0
+    } else if (bet > pot) {
+        alert ('Bet must not be larger than player pot')
+        bet = 0;
+    } else {
+
+    currentBet.textContent = Math.floor(bet);
     enterBet.classList.add('hidden');
+    
+    }
 });
 
 // Check if the player or dealer busts or hits blackjack
@@ -225,7 +237,7 @@ holdBtn.addEventListener('click', function() {
         checkForBustOrBj(dealerHand);
     };
 
-    if(dealerHand < 21 && dealerHand > playerHand) {
+    if(dealerHand < 21 && dealerHand >= playerHand) {
     calculateWinner(playerHand, dealerHand);
     };
 });

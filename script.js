@@ -89,6 +89,11 @@ if (restarted = true) {
 if (removeBetBtn = true) {
     enterBet.classList.remove('hidden');
 }
+
+if (Number(pot) === 0) {
+    alert('GAME OVER')
+    };
+    
 };
 init();
 
@@ -99,16 +104,17 @@ enterBet.addEventListener('click', function() {
 
     if (isNaN(bet)) {
         alert('Bet must be a number');
-        bet = 0
+        bet = 0;
     } else if (bet > pot) {
-        alert ('Bet must not be larger than player pot')
+        alert ('Bet must not be larger than player pot');
         bet = 0;
     } else {
+        // Do Nothing
+    }
 
     currentBet.textContent = Math.floor(bet);
     enterBet.classList.add('hidden');
 
-    }
 });
 
 // Check if the player or dealer busts or hits blackjack
@@ -205,7 +211,7 @@ function getCardPlayer(x, y) {
 
 // Deal
 dealBtn.addEventListener('click', function() {
-    if(playerHand === 0 && dealerHand === 0) {
+    if(playerHand === 0 && dealerHand === 0 && bet != 0) {
         // playerHand = getRandomIntPlayer();
         getCardPlayer(cards, suits);
         getCardDealer(cards, suits);
@@ -217,6 +223,12 @@ dealBtn.addEventListener('click', function() {
         holdBtn.classList.remove('hidden');
     };
     checkForBustOrBj(playerHand);
+
+    if (bet === 0) {
+        alert('Enter Bet')
+    } else if (pot === 0) {
+        alert('You are out of Money GAME OVER')
+    }; 
 });
 // Hit
 hitBtn.addEventListener('click', function() {

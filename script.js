@@ -109,11 +109,11 @@ enterBet.addEventListener('click', function() {
         alert ('Bet must not be larger than player pot');
         bet = 0;
     } else {
-        // Do Nothing
+        enterBet.classList.add('hidden');
+        currentBet.textContent = Math.floor(bet);
     }
 
-    currentBet.textContent = Math.floor(bet);
-    enterBet.classList.add('hidden');
+    
 
 });
 

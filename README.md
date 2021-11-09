@@ -9,8 +9,6 @@ This is a series of development stages from which I will build a blackjack game 
     - Create functionality for a player $$ pot, and a way to draw from that amoun to make bets.
     - Substitute the random number 1 - 12 for images of of 52 card deck.
     - Update the styles and make the app look nice.
-    - Update functionality to split and double down.
-    - Build a shoe that hold 5 decks of 52 cards, subtracting cards from the shoe each time it is played.
 - Refactor the code from "Functional" based to "Class" based.
 - Refactor the class based code for Lightning Web Components. 
     - Create LWC project and scratch org. 

@@ -29,6 +29,18 @@ hr {
     border-top: 8px solid black;
     border-radius: 5px;
 }
+button {
+    width: 150px;
+    border-radius: 5px;
+    background-color:black;
+    color: #44d62c;
+    border: 1px solid #44d62c;
+    font-weight:bold;
+    font-size: 18px;
+}
+.hidden {
+    display:none;
+}
 .moneyPot {
     color: #44a07bff;
     display:border-box;
@@ -38,15 +50,6 @@ hr {
 .bjsc {
     color: white;
     padding-left: 30px;
-}
-button {
-    width: 150px;
-    border-radius: 5px;
-    background-color:black;
-    color: #44d62c;
-    border: 1px solid #44d62c;
-    font-weight:bold;
-    font-size: 18px;
 }
 button:hover {
     box-shadow: 3px 3px 5px rgb(50, 50, 50);
@@ -70,9 +73,6 @@ button:hover {
       animation-duration: 3s;
       letter-spacing: .5rem;
 }
-.hidden {
-    display:none;
-}
 .poker-table {
     background-color:#44a07bff!important;
     padding: 12px;
@@ -85,6 +85,7 @@ bottom: 0;
 height: 100px;
 z-index: 1;
 }
+
 /***** Animation *****/
 @keyframes rotate {
     0% {

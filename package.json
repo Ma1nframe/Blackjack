@@ -1,10 +1,11 @@
 {
   "name": "blackjack",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Javascript Blackjack Game, built in stages.",
   "scripts": {
-    "build": "parcel build index.html",
-    "start": "parcel index.html --open"
+    "build": "parcel build src/script.js",
+    "start": "parcel index.html --open",
+    "server": "live-server --port=5501 --entry-file=index.html"
   },
   "repository": {
     "type": "git",

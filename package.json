@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Javascript Blackjack Game, built in stages.",
   "scripts": {
-    "dev": "parcel script.js",
-    "build": "parcel build script.js",
-    "start": "npm run build && live-server script.js"
+    "build": "parcel build index.html",
+    "start": "parcel index.html --open"
   },
   "repository": {
     "type": "git",

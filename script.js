@@ -58,15 +58,15 @@ bet = 0;
 inputBet.value = 0;
 currentBet.textContent = bet;
 player.textContent = playerHand;
-pDraw1.src = "assets/cards/bicycle-red-back.png";
-pDraw2.src = "assets/cards/bicycle-red-back.png";
+pDraw1.src = "/assets/bicycle-red-back.png";
+pDraw2.src = "/assets/bicycle-red-back.png";
 pDraw3.src = "";
 pDraw4.src = "";
 pDraw5.src = "";
 pDraw6.src = "";
 dealer.textContent = dealerHand;
-dDraw1.src = "assets/cards/bicycle-blue-back.png";
-dDraw2.src = "assets/cards/bicycle-blue-back.png";
+dDraw1.src = "/assets/bicycle-blue-back.png";
+dDraw2.src = "/assets/bicycle-blue-back.png";
 dDraw3.src = "";
 dDraw4.src = "";
 dDraw5.src = "";
@@ -112,8 +112,6 @@ enterBet.addEventListener('click', function() {
         enterBet.classList.add('hidden');
         currentBet.textContent = Math.floor(bet);
     }
-
-    
 
 });
 
@@ -187,7 +185,7 @@ function getCardDealer(x, y) {
  
     // Dynamically generate the .png image
     const draws = [dDraw1, dDraw2, dDraw3, dDraw4, dDraw5, dDraw6];
-    draws[indexD - 1].src = `assets/cards/${card}-${suit}.png`;
+    draws[indexD - 1].src = `/assets/${card}-${suit}.png`;
     indexD++;
 };
 
@@ -205,7 +203,7 @@ function getCardPlayer(x, y) {
 
     // Dynamically generate the .png image
     const draws = [pDraw1, pDraw2, pDraw3, pDraw4, pDraw5, pDraw6];
-    draws[indexP - 1].src = `assets/cards/${card}-${suit}.png`;
+    draws[indexP - 1].src = `/assets/${card}-${suit}.png`;
     indexP++;
 };
 

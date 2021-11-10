@@ -21,14 +21,15 @@ This is a series of development stages from which I will build a blackjack game 
 
 # Commands
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
-### `npm run start`
-
-Runs Build for production and Live server for viewing automatic updates in browser. 
 
 ### `npm run build`
 
 Builds the app for production. 
 
-### `npm run dev`
+### `npm run start`
 
-Builds development environment. 
+Starts the production version of the app 
+
+### `npm run server`
+
+Runs live-server. 
